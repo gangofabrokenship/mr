@@ -93,7 +93,7 @@ const calc = () => {
         if (fac === 'official') {
             days = guar ? 31 : 14;
         } else if (fac === 'autonomy') {
-            days = 7;
+            days = guar ? 14 : 7;
         } else {
             days = 7;
         }
