@@ -216,18 +216,21 @@
           <option value="отработка">Изгнание с отработкой</option>
         </select>
       </div>
+    </div> <!-- Закрываем grid для шапки -->
 
-      <div id="exileTargetIdWrap">
+    <!-- Новый блок для полей ввода -->
+    <div class="flex-row">
+      <div id="exileTargetIdWrap" class="flex-item-short">
         <label for="exileTargetId">ID</label>
         <input id="exileTargetId" type="text" placeholder="1234567">
       </div>
 
-      <div id="exileTargetNameWrap">
+      <div id="exileTargetNameWrap" class="flex-item-long">
         <label for="exileTargetName">ИМЯ</label>
         <input id="exileTargetName" type="text" placeholder="Имя">
       </div>
 
-      <div id="exileRankWrap">
+      <div id="exileRankWrap" class="flex-item-long">
         <label for="exileRank">ДОЛЖНОСТЬ</label>
         <select id="exileRank">
           <option value="100" selected>Малыш</option>
