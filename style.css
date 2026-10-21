@@ -372,10 +372,9 @@ input[type="checkbox"] {
 
 .flex-row {
     display: flex;
-    gap: 15px; 
-    margin-top: 15px;
-    margin-bottom: 15px;
-    flex-wrap: nowrap;
+    gap: 15px;
+    flex-wrap: nowrap; 
+    width: 100%;
 }
 
 .flex-row > div {
@@ -388,12 +387,13 @@ input[type="checkbox"] {
 }
 
 .flex-item-long {
-    flex: 1 1 0;
+    flex: 1 1 0; 
 }
 
 @media (max-width: 600px) {
     .flex-row {
         flex-wrap: wrap;
+        gap: 10px;
     }
     .flex-item-short, .flex-item-long {
         flex: 1 1 100%;
