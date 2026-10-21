@@ -286,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const type = qs('exileType').value;
             const targetId = qs('exileTargetId').value.trim() || '1234567';
             const targetName = qs('exileTargetName').value.trim() || 'Имя';
+            const rankPoints = qs('exileRank') ? qs('exileRank').value : '100'; // Получаем баллы
 
             let res = '';
             let report = '';
@@ -298,8 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const today = getMoscowDate();
                 const endDate = addDays(today, 31);
                 const srok = `${today} — ${endDate}`;
-                res = tpl.split('{СРОК_ИЗГНАНИЯ}').join(srok);
-                report = `#отработка — ${targetName} [${targetId}], ${srok}`;
+                
+                // Заменяем {СРОК_ИЗГНАНИЯ} и новый плейсхолдер {БАЛЛЫ}
+                res = tpl
+                    .split('{СРОК_ИЗГНАНИЯ}').join(srok)
+                    .split('{БАЛЛЫ}').join(rankPoints);
+                
+                // Добавляем баллы в конец отчета
+                report = `#отработка — ${targetName} [${targetId}], ${srok}\n${rankPoints} баллов`;
             }
             qs('exileResult').value = res;
             if (qs('exileReportResult')) qs('exileReportResult').value = report;
@@ -335,6 +342,7 @@ if (exileTypeEl) {
         const isTraining = exileTypeEl.value === 'отработка';
         if (qs('exileTargetIdWrap')) qs('exileTargetIdWrap').classList.toggle('hidden', !isTraining);
         if (qs('exileTargetNameWrap')) qs('exileTargetNameWrap').classList.toggle('hidden', !isTraining);
+        if (qs('exileRankWrap')) qs('exileRankWrap').classList.toggle('hidden', !isTraining); // <-- ДОБАВЛЕНА ЭТА СТРОКА
         if (qs('exileReportCard')) qs('exileReportCard').classList.toggle('hidden', !isTraining);
     };
     exileTypeEl.addEventListener('change', toggleExileFields);
